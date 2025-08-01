@@ -84,11 +84,11 @@ int main(){
   head->data = 7;
   head->next = second;
 
-   // Link first node with the second node
+   // Link second node with the third node
   second->data = 11;
   second->next = third;
 
-  // Link second node with the third node
+  // Link third node with the fourth node
   third->data = 66;
   third->next = fourth;
   
