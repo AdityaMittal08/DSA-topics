@@ -38,6 +38,7 @@ void push(struct stack *ptr, int value){
   }
 }
 
+
 // function which pops the element from the stack
 int pop(struct stack *ptr){
   if(isEmpty(ptr)){
@@ -51,6 +52,28 @@ int pop(struct stack *ptr){
   }
 }
 
+// peek the value at a position of the stack
+int peek(struct stack * sp, int i){
+  int arrayInd = sp ->top - i + 1;
+  if(arrayInd < 0){
+    printf("Not a valid position for the stack");
+    return -1;  
+  }
+  else {
+    return sp -> arr[arrayInd];
+  }
+}
+
+// returns top element of stack
+int stackTop(struct stack * sp){
+  return sp->arr[sp->top];
+}
+
+// return bottom value of stack
+int stackBottom(struct stack *sp){
+  return sp->arr[0];
+
+}
 int main(){
   struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
   sp -> size = 10;
@@ -75,7 +98,15 @@ int main(){
   printf("After pushing, Empty : %d \n", isEmpty(sp));
 
   // follows the rule of LIFO or FILO
-  printf("popped %d from the stack \n", pop(sp));
-  printf("popped %d from the stack \n", pop(sp));
+  printf("Popped %d from the stack \n", pop(sp));
+  printf("Popped %d from the stack \n", pop(sp));
+
+  for (int j = 1; j <= sp->top + 1; j++){ // printing all the values from the stack
+  printf("The value at position %d is %d \n", j, peek(sp, j));
+  }
+
+  printf("The value of the topmost element is %d \n", stackTop(sp));
+  printf("The value of the bottom most element is %d \n", stackBottom(sp));
+
   return 0;
 }
